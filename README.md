@@ -26,19 +26,19 @@ In the end I used a 2-layer perceptron with the features below as it gave better
 Features generated:
 
 tsfresh generates the following aggregate features for each column of the time series for each trip
-    - length
-    - min
-    - max
-    - mean
-    - median
-    - standard deviation
-    - variance
+  - length
+  - min
+  - max
+  - mean
+  - median
+  - standard deviation
+  - variance
 
 I also computed derivatives of the acceleration, gyro and speed columns for each direction, then I computed the following aggregates for the new columns
-    - min
-    - max
-    - mean
-    - median
-    - standard deviation
+  - min
+  - max
+  - mean
+  - median
+  - standard deviation
 
 The intuition behind this is that in a perfectly smooth trip, the car is moving at a constant speed. Therefore the acceleration measurements should remain constant (non-zero because of gravity and orientation). As the movement of the car becomes more erratic, the change in acceleration values becomes bigger [Jerk (Physics)](https://en.wikipedia.org/wiki/Jerk_(physics)). Similar logic applies to the gyroscope and GPS speed values as well. 
