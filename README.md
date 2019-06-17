@@ -19,7 +19,7 @@ https://www.aiforsea.com/safety
 
 ## Approach
 
-Originally I tried to use a (LSTM)(https://keras.io/layers/recurrent/#lstm) layer in my model, but discarded it as it was overfitting and giving poor performance and predictive power on the test set, even when augmented with extra aggregate features.
+Originally I tried to use a [LSTM](https://keras.io/layers/recurrent/#lstm) layer in my model, but discarded it as it was overfitting and giving poor performance and predictive power on the test set, even when augmented with extra aggregate features.
 
 In the end I used a 2-layer perceptron with the features below as it gave better performance and predictive power.
 
@@ -41,4 +41,4 @@ I also computed derivatives of the acceleration, gyro and speed columns for each
     - median
     - standard deviation
 
-The intuition behind this is that in a perfectly smooth trip, the car is moving at a constant speed. Therefore the acceleration measurements should remain constant (non-zero because of gravity and orientation). As the movement of the car becomes more erratic, the change in acceleration values becomes bigger (Jerk (Physics))[https://en.wikipedia.org/wiki/Jerk_(physics)]. Similar logic applies to the gyroscope and GPS speed values as well. 
+The intuition behind this is that in a perfectly smooth trip, the car is moving at a constant speed. Therefore the acceleration measurements should remain constant (non-zero because of gravity and orientation). As the movement of the car becomes more erratic, the change in acceleration values becomes bigger [Jerk (Physics)](https://en.wikipedia.org/wiki/Jerk_(physics)). Similar logic applies to the gyroscope and GPS speed values as well. 
