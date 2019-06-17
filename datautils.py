@@ -71,10 +71,78 @@ def preprocess_data(raw_features, labels):
 	combined['stdev_jerk_z'] = np.vectorize(stdev)(combined['jerk_z'])
 
 
+	combined['min_gyro_accel_x'] = np.vectorize(min)(combined['gyro_accel_x'])
+	combined['min_gyro_accel_y'] = np.vectorize(min)(combined['gyro_accel_y'])
+	combined['min_gyro_accel_z'] = np.vectorize(min)(combined['gyro_accel_z'])
+
+	combined['max_gyro_accel_x'] = np.vectorize(max)(combined['gyro_accel_x'])
+	combined['max_gyro_accel_y'] = np.vectorize(max)(combined['gyro_accel_y'])
+	combined['max_gyro_accel_z'] = np.vectorize(max)(combined['gyro_accel_z'])
+
+	combined['mean_gyro_accel_x'] = np.vectorize(mean)(combined['gyro_accel_x'])
+	combined['mean_gyro_accel_y'] = np.vectorize(mean)(combined['gyro_accel_y'])
+	combined['mean_gyro_accel_z'] = np.vectorize(mean)(combined['gyro_accel_z'])
+
+	combined['median_gyro_accel_x'] = np.vectorize(median)(combined['gyro_accel_x'])
+	combined['median_gyro_accel_y'] = np.vectorize(median)(combined['gyro_accel_y'])
+	combined['median_gyro_accel_z'] = np.vectorize(median)(combined['gyro_accel_z'])
+
+	combined['stdev_gyro_accel_x'] = np.vectorize(stdev)(combined['gyro_accel_x'])
+	combined['stdev_gyro_accel_y'] = np.vectorize(stdev)(combined['gyro_accel_y'])
+	combined['stdev_gyro_accel_z'] = np.vectorize(stdev)(combined['gyro_accel_z'])
+
+
+	combined['min_gps_accel'] = np.vectorize(min)(combined['gps_accel'])
+
+	combined['max_gps_accel'] = np.vectorize(max)(combined['gps_accel'])
+
+	combined['mean_gps_accel'] = np.vectorize(mean)(combined['gps_accel'])
+
+	combined['median_gps_accel'] = np.vectorize(median)(combined['gps_accel'])
+
+	combined['stdev_gps_accel'] = np.vectorize(stdev)(combined['gps_accel'])
+
+
 	#prepare output
 	booking_id = combined['bookingID']
 	labels = combined['label']
-	aggregate_features_columns = ['min_jerk_x', 'min_jerk_y', 'min_jerk_z', 'max_jerk_x', 'max_jerk_y', 'max_jerk_z', 'mean_jerk_x', 'mean_jerk_y', 'mean_jerk_z', 'median_jerk_x', 'median_jerk_y', 'median_jerk_z', 'stdev_jerk_x', 'stdev_jerk_y', 'stdev_jerk_z']
+	aggregate_features_columns = [
+		'min_jerk_x', 
+		'min_jerk_y', 
+		'min_jerk_z', 
+		'max_jerk_x', 
+		'max_jerk_y', 
+		'max_jerk_z', 
+		'mean_jerk_x', 
+		'mean_jerk_y', 
+		'mean_jerk_z', 
+		'median_jerk_x', 
+		'median_jerk_y', 
+		'median_jerk_z', 
+		'stdev_jerk_x', 
+		'stdev_jerk_y', 
+		'stdev_jerk_z', 
+		'min_gyro_accel_x', 
+		'min_gyro_accel_y', 
+		'min_gyro_accel_z', 
+		'max_gyro_accel_x', 
+		'max_gyro_accel_y', 
+		'max_gyro_accel_z', 
+		'mean_gyro_accel_x', 
+		'mean_gyro_accel_y', 
+		'mean_gyro_accel_z', 
+		'median_gyro_accel_x', 
+		'median_gyro_accel_y', 
+		'median_gyro_accel_z', 
+		'stdev_gyro_accel_x', 
+		'stdev_gyro_accel_y', 
+		'stdev_gyro_accel_z', 
+		'min_gps_accel', 
+		'max_gps_accel', 
+		'mean_gps_accel', 
+		'median_gps_accel', 
+		'stdev_gps_accel'
+		]
 
 	final_timeseries_features = combined.drop(['bookingID', 'label', 'second'] + list(extracted_features.columns) + aggregate_features_columns, axis=1)
 	aggregate_features = combined[list(extracted_features.columns) + aggregate_features_columns]
