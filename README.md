@@ -23,7 +23,7 @@ Originally I tried to use a [LSTM](https://keras.io/layers/recurrent/#lstm) laye
 
 In the end I used a 2-layer perceptron with the features below as it gave better performance and predictive power.
 
-Features generated:
+Features generated (107 total):
 
 tsfresh generates the following aggregate features for each column of the time series for each trip
   - length
